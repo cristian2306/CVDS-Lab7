@@ -1,42 +1,22 @@
-CREATE TABLE IF NOT EXISTS `VI_CLIENTES` (
-  `documento` BIGINT(20) NOT NULL,
-  `nombre` VARCHAR(50)  NOT NULL,
-  `telefono` VARCHAR(20)  NOT NULL,
-  `direccion` VARCHAR(150)  NOT NULL,
-  `email` VARCHAR(150)  NOT NULL,
-  `vetado` TINYINT(1) NOT NULL);
+-- ---------------------------------------------------
+-- Tabla 'ORD_PEDIDOS'
+-- ---------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ORD_PEDIDOS`(
+  `codigo` INT NOT NULL,
+  `fecha_radicacion` DATETIME NOT NULL);
 
+-- ---------------------------------------------------
+-- Tabla 'ORD_DATALLES_PEDIDO'
+-- ---------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ORD_DETALLES_PEDIDO`(
+  `pedido_fk` INT NOT NULL,
+  `producto_fk` INT NOT NULL,
+  `cantidad` INT NOT NULL);
 
--- -----------------------------------------------------
--- Table `VI_TIPOITEM`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `VI_TIPOITEM` (
-  `id` INT(11) NOT NULL,
-  `descripcion` VARCHAR(50)  NOT NULL);
-
-
--- -----------------------------------------------------
--- Table `VI_ITEMS`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `VI_ITEMS` (
-  `id` INT(11) NOT NULL,
-  `nombre` VARCHAR(50)  NOT NULL,
-  `descripcion` VARCHAR(500)  NOT NULL,
-  `fechalanzamiento` DATE NOT NULL,
-  `tarifaxdia` BIGINT(20) NOT NULL,
-  `formatorenta` VARCHAR(20) NOT NULL,
-  `genero` VARCHAR(20)  NOT NULL,
-  `TIPOITEM_id` INT(11) NOT NULL);
-
-
--- -----------------------------------------------------
--- Table `VI_ITEMRENTADO`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `VI_ITEMRENTADO` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `CLIENTES_documento` BIGINT(20) NOT NULL,
-  `ITEMS_id` INT(11) NOT NULL,
-  `fechainiciorenta` DATE NOT NULL,
-  `fechafinrenta` DATE NOT NULL);
-
-
+-- ---------------------------------------------------
+-- Tabla 'ORD_PRODUCTOS'
+-- ---------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ORD_PRODUCTOS`(
+  `codigo` INT NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `precio` INT NOT NULL);
