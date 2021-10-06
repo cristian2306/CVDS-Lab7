@@ -59,11 +59,9 @@ public class JDBCExample {
            System.out.println("-----------------------");
            
            
-           int suCodigoECI=20134423;
-           registrarNuevoProducto(con, suCodigoECI, "SU NOMBRE", 99999999);            
-           con.commit();
-                       
-           
+           int suCodigoECI=2167892;
+           //registrarNuevoProducto(con, suCodigoECI, "CRISTIAN", 99999999);            
+           //con.commit();         
            con.close();
                                   
        } catch (ClassNotFoundException | SQLException ex) {
@@ -92,7 +90,6 @@ public class JDBCExample {
         //usar 'execute'
         addProduct.executeUpdate();
         con.commit();
-       
    }
    
    /**
@@ -103,7 +100,7 @@ public class JDBCExample {
     */
    public static List<String> nombresProductosPedido(Connection con, int codigoPedido){
        List<String> np=new LinkedList<>();
-       String selectString = "SELECT nombre FROM ORD_PRODUCTOS WHERE id=(Select ITEMS_id FROM ORD_DETALLES_PEDIDO WHERE pedido_fk=?)";
+       String selectString = "SELECT ORD_PRODUCTOS.nombre FROM ORD_PRODUCTOS INNER JOIN ORD_DETALLE_PEDIDO INNER JOIN ORD_PEDIDOS WHERE ORD_PEDIDOS.codigo=? ";
        try{
         //Crear prepared statement
         PreparedStatement selectQuery = con.prepareStatement(selectString);
@@ -115,10 +112,10 @@ public class JDBCExample {
         ResultSetMetaData resultado = (ResultSetMetaData) consulta.getMetaData();
         //Llenar la lista y retornarla
         while (consulta.next()){
-            np.add(consulta.getString("nombre"));
+            np.add(consulta.getString("ORD_PRODUCTOS.nombre"));
         }
        }catch(Exception e){
-            e.getMessage();
+            System.out.println(e.getMessage());
        }
        return np;
    }
@@ -131,24 +128,25 @@ public class JDBCExample {
     * @return el costo total del pedido (suma de: cantidades*precios)
     */
    public static int valorTotalPedido(Connection con, int codigoPedido){
-        int precio = 0;
+        String precio = "";
         int cantidad = 0;
         int valorTotal = 0;
         //Crear prepared statement
-        String ConsultaValorPedido = "SELECT p.codigo, d.cantidad, p.precio FROM FROM ORD_DETALLES_PEDIDO d INNER JOIN ORD_PRODUCTOS p ON d.producto_fk = p.codigo";
+        String ConsultaValorPedido = "SELECT SUM(ORD_PRODUCTOS.precio*ORD_DETALLE_PEDIDO.cantidad) AS SUMA FROM ORD_PEDIDOS INNER JOIN ORD_DETALLE_PEDIDO INNER JOIN ORD_PRODUCTOS WHERE ORD_PEDIDOS.codigo = ?";
        try{
         //Crear prepared statement
         PreparedStatement selectQuery = con.prepareStatement(ConsultaValorPedido);
         //asignar parámetros
         selectQuery.setInt(1,codigoPedido);
+        System.out.println("Error aqui");
         //usar executeQuery
         ResultSet consulta = selectQuery.executeQuery();
         //Sacar resultado del ResultSet
-        precio = consulta.getInt("p.precio");
+        precio = consulta.getString("SUMA");
+        System.out.println(precio + "" + cantidad+"" +"" +valorTotal);
         cantidad = consulta.getInt("d.cantidad");
-        valorTotal = precio*cantidad;
        }catch(Exception e){
-           e.getMessage();
+            System.out.println(e.getMessage() + e.getCause());
        }
        
        return valorTotal;

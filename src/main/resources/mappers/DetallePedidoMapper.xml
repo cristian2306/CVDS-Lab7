@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.DetallePedidoMapper">
+  <select parameterType="map" id="consultarPedidos" resultMap="ProductResult">
+    SELECT 
+    pe.codigo,
+    pe.fecha_radicacion, 
+    d.pedido,
+    d.producto,
+    d.cantidad,
+    pr.codigo,
+    pr.nombre,
+    pr.nombre
+    FROM ORD_PEDIDOS as p
+    INNER JOIN ORD_DETALLES_PEDIDO as d ON pe.codigo = d.pedido 
+    INNER JOIN ORD_PRODUCTOS as pr ON d.producto = pr.codigo 
+  </select>
+  <resultMap type="DetallePedido">
+
+  </resultMap>
+
+          	
+</mapper>
