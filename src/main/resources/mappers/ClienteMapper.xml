@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper">
-  <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+  <select  id="consultarClientes" resultMap="ClienteResult">
 		select
     c.nombre as nombre,
     c.documento as documento,
@@ -21,7 +21,11 @@
     i.fechalanzamiento as fechalanzamiento,
     i.tarifaxdia as tarifaxdia,
     i.formatorenta as formatorenta,
+<<<<<<< HEAD
+    i.genero as genero ,        
+=======
     i.genero as genero ,
+>>>>>>> 0b3e909a48c7773613ff025e9dd0b8e5375cef96
     ti.id as idTipoItem,
     ti.descripcion as descripcionTipoItem
     FROM VI_CLIENTES as c 
@@ -29,6 +33,40 @@
     left join VI_ITEMS as i on ir.ITEMS_id=i.id 
     left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
   </select>
+
+  <select parameterType="map" id="consultarCliente" resultMap="ClienteResult">
+    select
+    c.nombre as nombre,
+    c.documento as documento,
+    c.telefono as telefono,
+    c.direccion as direccion,
+    c.email as email,
+    c.vetado as vetado,
+    ir.id as id,
+    ir.fechainiciorenta as fechainiciorenta,
+    ir.fechafinrenta as fechafinrenta ,
+    i.id as idItem,
+    i.nombre as nombreItem,
+    i.descripcion as descripcion,
+    i.fechalanzamiento as fechalanzamiento,
+    i.tarifaxdia as tarifaxdia,
+    i.formatorenta as formatorenta,
+    i.genero as genero ,        
+    ti.id as idTipoItem,
+    ti.descripcion as descripcionTipoItem
+    FROM VI_CLIENTES as c 
+    left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
+    left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+    left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
+    where  #{idcli} = c.documento;
+  </select>
+
+  <insert id="agregarItemRentadoACliente">
+    insert into VI_ITEMRENTADO (CLIENTES_documento,Items_id,fechainiciorenta,fechafinrenta)
+    values (#{idic},#{idi},#{fechainicio},#{fechafin})
+  </insert>
+
+  
   <resultMap type="Cliente" id="ClienteResult">
     <id property="documento" column="documento"/>
     <result property="nombre" column="nombre"/>

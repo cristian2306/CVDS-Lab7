@@ -47,6 +47,19 @@
                 #{item.idTipo}
                 )
     </insert>
+<<<<<<< HEAD
+
+  <resultMap type="Item" id="ItemResult">
+    <id property="id" column="identificadorItem"/>
+    <result property="nombre" column="nombreItem"/>
+    <result property="descripcion" column="descripcion"/>
+    <result property="fechalanzamiento" column="fechalanzamiento"/>
+    <result property="tarifaxdia" column="tarifaxdia"/>
+    <result property="formatorenta" column="formatorenta"/>
+    <result property="genero" column="genero"/>
+    <association property="tipo" javaType="TipoItem" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult" columnPrefix="ti_"></association>
+  </resultMap>
+=======
     <resultMap type="Item" id="ItemResult">
         <id property="id" column="identificadorItem"/>
         <result property="nombre" column="nombreItem"/>
@@ -58,4 +71,5 @@
         <association property="tipo" javaType="TipoItem" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult" columnPrefix="ti_"></association>
     </resultMap>
 
+>>>>>>> 0b3e909a48c7773613ff025e9dd0b8e5375cef96
 </mapper>
