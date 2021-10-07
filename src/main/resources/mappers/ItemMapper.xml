@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper">
-<<<<<<< HEAD
     <select id="consultarItems" parameterType="map" resultMap="ItemResult">
         SELECT
     i.id as identificadorItem
@@ -20,8 +19,7 @@
     LEFT JOIN VI_TIPOITEM AS ti on i.TIPOITEM_id=ti.id       
     </select>
 
-    <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper">
-    <select id="consultarItems" parameterType="map" resultMap="ItemResult">
+    <select id="consultarItem" parameterType="map" resultMap="ItemResult">
         SELECT
     i.id as identificadorItem
     i.nombre as nombreItem,
@@ -49,21 +47,15 @@
                 #{item.idTipo}
                 )
     </insert>
-
-  <resultMap type="Item" id="ItemResult">
-    <id property="id" column="identificadorItem"/>
-    <result property="nombre" column="nombreItem"/>
-    <result property="descripcion" column="descripcion"/>
-    <result property="fechalanzamiento" column="fechalanzamiento"/>
-    <result property="tarifaxdia" column="tarifaxdia"/>
-    <result property="formatorenta" column="formatorenta"/>
-    <result property="genero" column="genero"/>
-    <association property="tipo" javaType="TipoItem" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult" columnPrefix="ti_"></association>
+    <resultMap type="Item" id="ItemResult">
+        <id property="id" column="identificadorItem"/>
+        <result property="nombre" column="nombreItem"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="fechalanzamiento" column="fechalanzamiento"/>
+        <result property="tarifaxdia" column="tarifaxdia"/>
+        <result property="formatorenta" column="formatorenta"/>
+        <result property="genero" column="genero"/>
+        <association property="tipo" javaType="TipoItem" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult" columnPrefix="ti_"></association>
     </resultMap>
-=======
 
-
-    
-    
->>>>>>> 31decb0b1e3a2bc8ea542a8dff8587edbe826cc5
 </mapper>
