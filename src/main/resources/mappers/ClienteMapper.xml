@@ -10,7 +10,7 @@
     c.documento as documento,
     c.telefono as telefono,
     c.direccion as direccion,
-    c.email as email,ItemRentado
+    c.email as email,
     c.vetado as vetado,
     ir.id as id,
     ir.fechainiciorenta as fechainiciorenta,

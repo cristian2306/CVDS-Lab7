@@ -21,6 +21,8 @@
     <result property="idItem" column="idItem"/>
     <result property="fechainiciorenta" column = "fechainiciorenta"/>
     <result property="fechafinrenta" column="fechafinrenta"/>
+    <association property="cliente" javaType="Cliente"/>
+    <collection property="idItem" ofType="Item" resultMap="ItemResul"></collection>
   </resultMap>
           	
 </mapper>

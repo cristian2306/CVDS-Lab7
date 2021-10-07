@@ -13,8 +13,8 @@
   </select>
 
   <resultMap type="TipoItem" id="TipoItemResult">
-    <id property="idTipoItem" column="idTIpoItem">
-    <result property="descripcionTipoItem" column="descripcionTipoItem">
+    <id property="idTipoItem" column="idTIpoItem"/>
+    <result property="descripcionTipoItem" column="descripcionTipoItem"/>
   </resultMap>      
 
 </mapper>

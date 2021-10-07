@@ -10,9 +10,10 @@
     <properties resource="config.properties">
     </properties>
     <typeAliases>
-        <typeAlias type="edu.eci.cvds.samples.entities.Pedido" alias="Pedido"/>
-        <typeAlias type="edu.eci.cvds.samples.entities.Detalle_Pedido" alias="Detalle_Pedido"/>
-        <typeAlias type="edu.eci.cvds.samples.entities.Producto" alias="Producto"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.Cliente" alias="Cliente"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.Item" alias="Item"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.ItemRentado" alias="ItemRentado"/>
+        <typeAlias type="edu.eci.cvds.samples.entities.TipoItem" alias="TipoItem"/>
     </typeAliases>	
 
     <environments default="development">
@@ -31,9 +32,9 @@
     </environments>
         
     <mappers>
-        <mapper resource="mappers/PedidoMapper.xml"></mapper>
-        <mapper resource="mappers/DetallePedidoMapper.xml"></mapper>
-        <mapper resource="mappers/Producto.xml"></mapper>    
+        <mapper resource="mappers/ClienteMapper.xml"></mapper>
+        <mapper resource="mappers/ItemMapper.xml"></mapper>
+        <mapper resource="mappers/TipoItemMapper.xml"></mapper>        
     </mappers> 
         
         
