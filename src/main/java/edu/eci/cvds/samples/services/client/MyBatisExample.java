@@ -20,6 +20,7 @@ package edu.eci.cvds.samples.services.client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Date;
 import java.sql.SQLException;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -66,8 +67,11 @@ public class MyBatisExample {
 
         ClienteMapper cm= (ClienteMapper)sqlss.getMapper(ClienteMapper.class);
         System.out.println("-----------------Consultar Clientes----------------");
-        System.out.println(cm.consultarClientes());
-        
+        //System.out.println(cm.consultarClientes());
+        System.out.println("-----------------Consultar Cliente:56155 --------------");
+        System.out.println(cm.consultarCliente(56155));
+        System.out.println("-----------------Añadiendo itemRentado al cliente 56155 el item 1 ");
+        cm.agregarItemRentadoACliente(56155, 1, Date.valueOf("2021-09-5"), Date.valueOf("2020-10-5"));
         //Crear el mapper y usarlo: 
         //ClienteMapper cm=sqlss.getMapper(ClienteMapper.class)
         //cm...
