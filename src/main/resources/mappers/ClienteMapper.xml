@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+<<<<<<< HEAD
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd%22%3E
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper">
+  <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+        select
+=======
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper">
   <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
 		select
+>>>>>>> 31decb0b1e3a2bc8ea542a8dff8587edbe826cc5
     c.nombre as nombre,
     c.documento as documento,
     c.telefono as telefono,
     c.direccion as direccion,
+<<<<<<< HEAD
+    c.email as email,ItemRentado
+=======
     c.email as email,
+>>>>>>> 31decb0b1e3a2bc8ea542a8dff8587edbe826cc5
     c.vetado as vetado,
     ir.id as id,
     ir.fechainiciorenta as fechainiciorenta,
@@ -21,7 +33,11 @@
     i.fechalanzamiento as fechalanzamiento,
     i.tarifaxdia as tarifaxdia,
     i.formatorenta as formatorenta,
+<<<<<<< HEAD
+    i.genero as genero ,
+=======
     i.genero as genero ,        
+>>>>>>> 31decb0b1e3a2bc8ea542a8dff8587edbe826cc5
     ti.id as idTipoItem,
     ti.descripcion as descripcionTipoItem
     FROM VI_CLIENTES as c 
@@ -37,7 +53,14 @@
     <result property="telefono" column="telefono"/>
     <result property="direccion" column="direccion"/>
     <result property="email" column="email"/>
+<<<<<<< HEAD
+    <result property
+
+  </resultMap>
+
+=======
     <result property="vetado" column="vetado"/>
   </resultMap>
           	
+>>>>>>> 31decb0b1e3a2bc8ea542a8dff8587edbe826cc5
 </mapper>
