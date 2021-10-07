@@ -60,8 +60,8 @@ public class JDBCExample {
            
            
            int suCodigoECI=2167892;
-           //registrarNuevoProducto(con, suCodigoECI, "CRISTIAN", 99999999);            
-           //con.commit();         
+           registrarNuevoProducto(con, suCodigoECI, "CRISTIAN", 99999999);            
+           con.commit();         
            con.close();
                                   
        } catch (ClassNotFoundException | SQLException ex) {
@@ -127,10 +127,9 @@ public class JDBCExample {
     * @param codigoPedido código del pedido cuyo total se calculará
     * @return el costo total del pedido (suma de: cantidades*precios)
     */
-   public static int valorTotalPedido(Connection con, int codigoPedido){
-        String precio = "";
-        int cantidad = 0;
+   public static Long valorTotalPedido(Connection con, int codigoPedido){
         int valorTotal = 0;
+        String precio = "";
         //Crear prepared statement
         String ConsultaValorPedido = "SELECT SUM(ORD_PRODUCTOS.precio*ORD_DETALLE_PEDIDO.cantidad) AS SUMA FROM ORD_PEDIDOS INNER JOIN ORD_DETALLE_PEDIDO INNER JOIN ORD_PRODUCTOS WHERE ORD_PEDIDOS.codigo = ?";
        try{
@@ -138,18 +137,18 @@ public class JDBCExample {
         PreparedStatement selectQuery = con.prepareStatement(ConsultaValorPedido);
         //asignar parámetros
         selectQuery.setInt(1,codigoPedido);
-        System.out.println("Error aqui");
         //usar executeQuery
         ResultSet consulta = selectQuery.executeQuery();
         //Sacar resultado del ResultSet
-        precio = consulta.getString("SUMA");
-        System.out.println(precio + "" + cantidad+"" +"" +valorTotal);
-        cantidad = consulta.getInt("d.cantidad");
+        while(consulta.next()){
+            precio = consulta.getString(1);
+        }
+        System.out.println(precio);
        }catch(Exception e){
             System.out.println(e.getMessage() + e.getCause());
        }
        
-       return valorTotal;
+       return Long.parseLong(precio);
    }
    
 
