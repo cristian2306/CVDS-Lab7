@@ -27,6 +27,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
 
 /**
  *
@@ -64,13 +65,14 @@ public class MyBatisExample {
 
         SqlSession sqlss = sessionfact.openSession();
 
-        ClienteMapper cm= (ClienteMapper)sqlss.getMapper(ClienteMapper.class);
-        System.out.println("-----------------Consultar Clientes----------------");
-        System.out.println(cm.consultarClientes());
-        
-        //Crear el mapper y usarlo: 
-        //ClienteMapper cm=sqlss.getMapper(ClienteMapper.class)
-        //cm...
+        //ClienteMapper cm= (ClienteMapper)sqlss.getMapper(ClienteMapper.class);
+        //System.out.println("-----------------Consultar Clientes----------------");
+        //System.out.println(cm.consultarClientes());
+
+        //ItemMapper im= (ItemMapper)sqlss.getMapper(ItemMapper.class);
+        //System.out.println("-----------------Consultar Items----------------");
+        //System.out.println(im.consultarItem(20000));
+
         
         
         

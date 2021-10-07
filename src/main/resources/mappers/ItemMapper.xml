@@ -5,34 +5,34 @@
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper">
     <select id="consultarItems" parameterType="map" resultMap="ItemResult">
-        SELECT
-    i.id as identificadorItem
-    i.nombre as nombreItem,
-    i.descripcion as descripcion,
-    i.fechalanzamiento as fechalanzamiento,
-    i.tarifaxdia as tarifaxdia,
-    i.formatorenta as formatorenta,
-    i.genero as genero
-    ti.id as idTipoItem,
-    ti.descripcion as descripcionTipoItem
+        select
+    i.id AS identificadorItem,
+    i.nombre AS nombreItem,
+    i.descripcion AS descripcion,
+    i.fechalanzamiento AS fecha,
+    i.tarifaxdia AS tarifaxdia,
+    i.formatorenta AS formatorenta,
+    i.genero AS genero,
+    ti.id AS idTipoItem,
+    ti.descripcion AS descripcionTipoItem
     FROM VI_ITEMS AS i
-    LEFT JOIN VI_TIPOITEM AS ti on i.TIPOITEM_id=ti.id       
+    LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id=ti.id   
     </select>
 
     <select id="consultarItem" parameterType="map" resultMap="ItemResult">
         SELECT
-    i.id as identificadorItem
+    i.id as identificadorItem,
     i.nombre as nombreItem,
     i.descripcion as descripcion,
     i.fechalanzamiento as fechalanzamiento,
     i.tarifaxdia as tarifaxdia,
     i.formatorenta as formatorenta,
-    i.genero as genero
+    i.genero as genero,
     ti.id as idTipoItem,
     ti.descripcion as descripcionTipoItem
     FROM VI_ITEMS AS i
     LEFT JOIN VI_TIPOITEM AS ti on i.TIPOITEM_id=ti.id  
-    WHERE {#Item.id} = i.id;     
+    WHERE #{Item.id} = i.id
     </select>
 
     <insert id="insertarItem" parameterType="map">
@@ -51,9 +51,9 @@
         <id property="id" column="identificadorItem"/>
         <result property="nombre" column="nombreItem"/>
         <result property="descripcion" column="descripcion"/>
-        <result property="fechalanzamiento" column="fechalanzamiento"/>
-        <result property="tarifaxdia" column="tarifaxdia"/>
-        <result property="formatorenta" column="formatorenta"/>
+        <result property="fechaLanzamiento" column="fechalanzamiento"/>
+        <result property="tarifaxDia" column="tarifaxdia"/>
+        <result property="formatoRenta" column="formatorenta"/>
         <result property="genero" column="genero"/>
         <association property="tipo" javaType="TipoItem" resultMap="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult" columnPrefix="ti_"></association>
     </resultMap>
