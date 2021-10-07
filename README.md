@@ -2,6 +2,10 @@
 ### Ciclos de Vida del desarrollo de Software – CVDS
 #### Tecnologías de persistencia - Frameworks de Persistencia - Introducción a MyBatis
 
+# INTEGRANTES
+- Cristian Andres Castellanos Fino
+- Diego Alejandro Gonzalez
+
 
 En este laboratorio se utilizará un 'framework' de persistencia. La base de datos que se utilizará tiene los siguientes parámetros:
 
