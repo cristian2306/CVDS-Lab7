@@ -29,6 +29,8 @@
     left join VI_ITEMS as i on ir.ITEMS_id=i.id 
     left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
   </select>
+
+  
   <resultMap type="Cliente" id="ClienteResult">
     <id property="documento" column="documento"/>
     <result property="nombre" column="nombre"/>
